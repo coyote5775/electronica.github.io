@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Calculadora de Resistencias</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style> 
+
+body {
+
+color: #2E2EFE;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.formulario {
+
+
+  margin: 20px auto;
+  width: 150px;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom:50px;
+}
+
+.formulario input[type="text"], .formulario select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 90px;
+}
+
+.formulario button {
+  padding: 10px 20px;
+  background-color:#82FA58 ;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.resultado {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Resistencias</h1>
+  <div class="formulario">
+    <label for="valor1">Valor 1:</label>
+    <input type="text" id="valor1">
+    <label for="valor2">Valor 2:</label>
+    <input type="text" id="valor2">
+    <label for="tipo">Tipo de resistencia:</label>
+    <select id="tipo">
+      <option value="serie">Serie</option>
+      <option value="paralelo">Paralelo</option>
+    </select>
+    <button onclick="calcularResistencia()">Calcular</button>
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <scripT> 
+  function calcularResistencia() {
+  var valor1 = parseFloat(document.getElementById('valor1').value);
+  var valor2 = parseFloat(document.getElementById('valor2').value);
+  var tipo = document.getElementById('tipo').value;
+
+  var resistencia;
+
+  if (tipo === "serie") {
+    resistencia = valor1 + valor2;
+  } else if (tipo === "paralelo") {
+    resistencia = (valor1 * valor2) / (valor1 + valor2);
+  }
+
+  var resultadoElemento = document.getElementById('resultado');
+  resultadoElemento.innerHTML = "La resistencia resultante es: <span>" + resistencia + "</span>";
+}
+
+  </script>
+</body>
+</html>
